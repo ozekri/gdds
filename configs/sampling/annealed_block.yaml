@@ -1,0 +1,36 @@
+# Annealed Block Sampler configuration
+# Block-based MCMC sampler for discrete diffusion models
+# Supports both absorbing-mask and uniform forward processes
+
+sampler:
+  _target_: discrete_diffusion.sampling.annealed_block.AnnealedBlockSampler
+
+# Required by base trainer
+predictor: ddpm_cache
+steps: 16  # Number of sampling steps
+use_float64: true  # Use float64 for sampling (matches MDLM default)
+p_nucleus: 1.0
+num_sample_batches: 1
+num_sample_log: 2
+semi_ar: False
+stride_length: 1
+num_strides: 1
+inject_bos: True
+first_hitting: True
+kv_cache: False
+var_length: False
+save_samples: false
+samples_path: null
+
+# Annealed block sampler specific parameters
+# Block size schedule (cosine decay from max to min fraction)
+block_frac_max: 0.20  # Maximum fraction of sequence to update per step
+block_frac_min: 0.015  # Minimum fraction of sequence to update per step
+
+# Block selection strategy
+random_block_steps: 4  # Number of initial steps using random block selection
+entropy_blocks: false  # Enable entropy-guided block selection after random_block_steps (disabled by default to save memory)
+
+# Late-stage resampling (no corruption, only resample from model)
+# late_resample_only_from: null  # Step index to start resample-only mode (default: 0.7 * steps)
+# If not specified, defaults to int(0.7 * steps)

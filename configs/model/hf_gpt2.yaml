@@ -1,0 +1,10 @@
+# Hydra instantiation config for HFGPT2Wrapper model
+_target_: discrete_diffusion.models.hf_gpt2_wrapper.HFGPT2Wrapper
+
+# Legacy fields for backward compatibility
+name: hf_gpt2
+type: hf_gpt2
+pretrained_model_name_or_path: gpt2
+# Maintain parity with GPT-2 defaults; adjust if you fine-tune longer contexts.
+length: 1024
+

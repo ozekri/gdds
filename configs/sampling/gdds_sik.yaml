@@ -1,0 +1,39 @@
+steps: 64
+
+eps: 1e-5
+
+sampler:
+  _target_: discrete_diffusion.sampling.gdds_sik_knn.GDDSSIKKNNSampler
+  mu_star: 1.0
+  chunk_size: 128
+  vocab_block_size: 50259
+  poisson_eps_mode: mu2_overK
+  poisson_eps_coeff: 1.0
+  poisson_eps_rel: 1.0e-6
+  poisson_N_max: 256
+  freeze_mu_star: 1.0
+  reverse_time_grid: time
+  use_float64: true
+
+temperature: 1.0
+
+num_sample_batches: 1
+num_sample_log: 2
+semi_ar: False
+stride_length: 1
+num_strides: 1
+first_hitting: True
+kv_cache: False
+var_length: False
+save_samples: false
+samples_path: null
+
+top_k: 0
+top_p: 0.0
+p_nucleus: 1.0
+
+inject_bos: False
+
+use_float64: true
+
+predictor: ddpm

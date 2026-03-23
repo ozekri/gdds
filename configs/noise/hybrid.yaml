@@ -1,0 +1,6 @@
+# Hydra instantiation config for Hybrid noise schedule
+# Note: tokenizer must be passed at runtime
+_target_: discrete_diffusion.noise_schedules.HybridDiffusion
+p_uniform: 0.0
+clip_noise: 20.0
+gamma: 1.0

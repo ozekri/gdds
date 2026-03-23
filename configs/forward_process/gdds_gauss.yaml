@@ -1,0 +1,8 @@
+# GDDS-Gauss: SIK with Gaussian Kernel
+defaults:
+  - sik_knn
+
+_target_: discrete_diffusion.forward_process.sik.GDDSGauss
+name: gdds_gauss
+metric: gaussian
+implementation: knn

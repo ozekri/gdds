@@ -1,0 +1,29 @@
+_target_: discrete_diffusion.models.campbell.Campbell
+
+name: campbell
+type: campbell
+
+hidden_size: 768
+n_heads: 12
+mlp_ratio: 4
+dropout: 0.1
+cond_dim: 128
+
+n_layers_mem: 5
+n_layers_q: 5
+
+length: 1024
+max_tokens: 1024
+
+tie_word_embeddings: false
+time_freq_size: 256
+
+mem_use_time: false
+query_use_time: true
+rank_time_mode: false
+
+use_stream_embeddings: false
+
+query_init_mode: learned
+
+debug_mode: false

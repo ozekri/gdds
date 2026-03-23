@@ -1,0 +1,6 @@
+# Hydra instantiation config for Geometric noise schedule
+_target_: discrete_diffusion.noise_schedules.GeometricNoise
+sigma_min: 1e-3
+sigma_max: 7.0
+# For config interpolation (e.g. algo.noise_schedule.eps); not used by GeometricNoise
+eps: 1e-3

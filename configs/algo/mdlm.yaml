@@ -1,0 +1,19 @@
+defaults:
+  - /forward_process: absorbing
+
+_target_: discrete_diffusion.algorithms.mdlm.MDLM
+name: mdlm
+backbone: dit
+parameterization: subs
+time_conditioning: False
+T: 0  # 0 (continuous time) / 1000
+causal_attention: False
+ignore_bos: False
+loss_type: elbo  # elbo, low_var
+
+shift_loss_targets: false
+
+# Step 7: configurable schedule + forward process (defaults)
+noise_schedule:
+  name: log_linear
+  eps: ${noise.eps}

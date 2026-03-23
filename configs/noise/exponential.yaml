@@ -1,0 +1,6 @@
+# Hydra config for Exponential noise schedule
+# α(t) = exp(-λ t), Λ(t) = λ t ⇒ both Δt and ΔΛ constant on uniform t-grid
+_target_: discrete_diffusion.noise_schedules.Exponential
+# Optional: set λ directly. If omitted, λ = -log(eps).
+# lam: 10.0
+eps: 1e-5

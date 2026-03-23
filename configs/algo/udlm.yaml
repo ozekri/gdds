@@ -1,0 +1,23 @@
+defaults:
+  - /forward_process: uniform
+
+_target_: discrete_diffusion.algorithms.udlm.UDLM
+name: udlm
+backbone: dit
+parameterization: subs
+time_conditioning: False
+T: 0  # 0 (continuous time) / 1000
+causal_attention: False
+ignore_bos: False
+loss_type: elbo  # elbo, low_var
+zero_recon_loss: True  # For UDLM, set to True to exclude reconstruction loss (correct for continuous-time)
+udlm_loss_variant: path  # standard or path (path-wise loss variant)
+
+# Step 7: configure schedule + uniform forward process
+# NOTE: UDLM currently requires log_linear noise schedule. Using other schedules will raise a ValueError.
+noise_schedule:
+  name: log_linear
+  eps: ${noise.eps}
+
+sampler:
+  _target_: discrete_diffusion.sampling.uniform.UniformSampler

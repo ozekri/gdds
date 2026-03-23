@@ -1,0 +1,10 @@
+training_latency:
+  _target_: src.discrete_diffusion.callbacks.training_latency_callback.TrainingLatencyCallback
+  enabled: ${latency_train.callback.enabled}
+  start_step: ${latency_train.callback.start_step}
+  num_batches: ${latency_train.callback.num_batches}
+  num_warmup: ${latency_train.num_warmup}
+  batch_size: ${loader.batch_size}
+  sequence_length: ${model.length}
+  save_name: ${latency_train.save_name}
+  pretty_print: ${latency_train.callback.pretty_print}

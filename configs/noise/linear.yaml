@@ -1,0 +1,3 @@
+# Hydra instantiation config for Linear noise schedule
+_target_: discrete_diffusion.noise_schedules.LinearNoiseSchedule
+eps: 1e-4

@@ -1,0 +1,38 @@
+_target_: discrete_diffusion.sampling.campbell.CampbellSamplerAbsorbingBatched
+
+name: campbell_absorbing
+
+sampler:
+  _target_: discrete_diffusion.sampling.campbell.CampbellSamplerAbsorbingBatched
+
+sampler_type: absorbing_batched
+
+steps: 128
+
+perm_batch_size: 16
+
+perm_progressive: false
+perm_progressive_thresholds: [64, 256]
+perm_progressive_blocks: [1, 4, 16]
+
+temperature: 1.0
+top_k: 0
+top_p: 1.0
+
+prompt_len: 0
+
+num_sample_batches: 1
+num_sample_log: 2
+
+predictor: campbell_absorbing
+p_nucleus: 1.0
+use_float64: true
+semi_ar: false
+stride_length: 1
+num_strides: 1
+first_hitting: true
+kv_cache: false
+var_length: false
+save_samples: false
+samples_path: null
+inject_bos: false

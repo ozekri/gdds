@@ -1,0 +1,27 @@
+# GDDS: uses the k-NN SIK forward process. Config lives in configs/forward_process/sik_knn.yaml.
+defaults:
+  - /forward_process: sik_knn
+
+_target_: discrete_diffusion.algorithms.gdds.GDDSDiffusion
+name: gdds
+backbone: dit
+parameterization: subs
+time_conditioning: True
+T: 0
+causal_attention: False
+ignore_bos: False
+loss_type: elbo
+# ELBO mode: force deterministic copy on non-jumped tokens (MDLM-style),
+# so CE over all tokens matches jump-masked training signal.
+carry_over: True
+zero_recon_loss: True
+
+# Override SIK params here if needed, e.g. forward_process.embedding_source=gpt2
+# All k-NN SIK defaults: configs/forward_process/sik_knn.yaml
+
+noise_schedule:
+  name: log_linear
+  eps: ${noise.eps}
+
+sampler:
+  _target_: discrete_diffusion.sampling.gdds_sik_knn.GDDSSIKKNNSampler

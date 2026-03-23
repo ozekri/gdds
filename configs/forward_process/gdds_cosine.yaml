@@ -1,0 +1,8 @@
+# GDDS-Cosine: SIK with Cosine Kernel
+defaults:
+  - sik_knn
+
+_target_: discrete_diffusion.forward_process.sik.GDDSCosine
+name: gdds_cosine
+metric: cosine
+implementation: knn

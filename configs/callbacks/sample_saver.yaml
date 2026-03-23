@@ -1,0 +1,8 @@
+sample_saver:
+  _target_: src.discrete_diffusion.callbacks.sample_saver.SampleSaver
+  enabled: false
+  every_n_steps: 1000
+  num_samples: ${loader.eval_batch_size}
+  num_steps: ${sampling.steps}
+  save_dir: ${cwd:}/samples
+  filename_template: step_{global_step}.json

@@ -1,0 +1,65 @@
+# Generative Perplexity Evaluation Configuration
+# Cross-PPL under Reference Language Models with Comprehensive Diagnostics
+
+samples_path: null  # Path to samples (.pt, .npz, .json) - OR use real_text_dataset (one must be provided)
+model_tokenizer: gpt2  # Tokenizer used by diffusion model to generate samples
+
+# Reference model(s) - can be single model or comma-separated list
+reference_model: gpt2-large
+reference_models: null  # Comma-separated list, e.g., "gpt2-large,gpt2,distilgpt2"
+
+# Real text baseline (alternative to samples_path)
+real_text_dataset: null  # Dataset name for baseline (e.g., "openwebtext-valid")
+real_text_num_samples: 1000  # Number of real text samples to score
+real_text_cache_dir: null  # Cache directory for dataset (default resolved from configs/paths/local.yaml, then $GDDS_DATA_DIR, then $HOME/.cache/gdds)
+
+# Tokenization and scoring
+retokenize: false  # If false and tokenizers compatible, use direct token-ID scoring (no decode/retokenize)
+                   # If true, always decode and retokenize (text-based pathway)
+max_length: 512  # Maximum sequence length for evaluation
+batch_size: 4  # Batch size for scoring
+
+# Decoding options (for text-based pathway)
+decode_skip_special_tokens: false  # Skip special tokens when decoding (default: False to preserve all tokens)
+decode_cleanup_spaces: false  # Clean up tokenization spaces (default: False to avoid artifacts)
+
+# Prefix/prompt handling
+prompt_len: null  # If provided, only score tokens after this position (for prompt leakage detection)
+ignore_prefix_tokens: 0  # Number of prefix tokens to ignore (alternative to prompt_len)
+
+# Chunking
+first_chunk_only: true  # Evaluate only up to first EOS token
+
+# Metrics computation
+compute_diversity_metrics: true  # Compute distinct-n metrics
+compute_repetition_metrics: true  # Compute repetition metrics
+
+# Optional distributional similarity (requires additional dependencies)
+compute_mauve: true # Compute MAUVE score (requires: pip install mauve-text)
+mauve_reference_dataset: openwebtext-valid  # Dataset for MAUVE reference
+
+compute_embedding_distance: true # Compute embedding-based distance (requires: pip install sentence-transformers)
+embedding_reference_dataset: openwebtext-valid  # Dataset for embedding reference
+embedding_model: sentence-transformers/all-MiniLM-L6-v2  # Sentence transformer model
+
+# Reporting
+num_print_debug: 5  # Number of samples to print (0 to disable)
+num_roundtrip_check: 100  # Number of samples to check for tokenization round-trip issues
+save_decoded_samples: false  # Save decoded text samples to .txt file
+save_per_sample_metrics: true  # Save per-sample metrics to .jsonl file
+
+# Bootstrap confidence intervals
+compute_bootstrap_ci: true  # Compute bootstrap confidence intervals for metrics
+bootstrap_n_samples: 1000  # Number of bootstrap resamples
+bootstrap_confidence: 0.95  # Confidence level (0.95 = 95% CI)
+bootstrap_seed: 42  # Random seed for bootstrap (for reproducibility)
+
+# Output
+metrics_path: gen_ppl_metrics.json  # Path to save metrics JSON
+
+# Performance
+torch_compile: false  # Compile model with torch.compile
+
+# Tail analysis thresholds
+tail_analysis_thresholds: [10.0, 15.0, 20.0]  # NLL thresholds for catastrophe rates
+tail_analysis_top_k: [10, 50, 100]  # Top-K values for mean NLL computation

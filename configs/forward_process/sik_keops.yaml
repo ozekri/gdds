@@ -1,0 +1,30 @@
+# SIK (Semantic-Informed Kernel) forward process with KeOps backend.
+# Mirrors the k-NN config but switches the kernel backend.
+
+_target_: discrete_diffusion.forward_process.sik.SIKForwardProcess
+name: sik_keops
+
+# --- Kernel (SIKKernel): embedding source + kernel params ---
+# embedding_source: "model" (backbone) or "gpt2" (pretrained; set HF_HOME or gpt2_path)
+embedding_source: gpt2
+gpt2_model_name_or_path: gpt2
+gpt2_path: null
+
+epsilon: 0.01
+gamma: 0.0
+metric: gaussian
+implementation: keops
+variable_bandwidth: True
+k_neighbors: 7
+degree_chunk_size: 1000
+use_knn_graph: True
+top_k: 64
+
+# --- Forward process (SIKForwardProcess) ---
+time_grid_size: 4096
+time_eps: 1e-5
+temperature_beta: 1.0
+verbose: False
+lambda_min: 0.01
+lambda_sigmoid_s: 10.0
+lambda_t0: 0.6

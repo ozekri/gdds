@@ -1,0 +1,3 @@
+# Hydra instantiation config for Cosine noise schedule
+_target_: discrete_diffusion.noise_schedules.CosineNoiseSchedule
+eps: 1e-4

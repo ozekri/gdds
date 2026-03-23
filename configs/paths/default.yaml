@@ -1,0 +1,1 @@
+cache_root: ${oc.env:GDDS_DATA_DIR,${oc.env:HOME,/tmp}/.cache/gdds}

@@ -1,0 +1,7 @@
+# Optional local override.
+# Edit this file if you want all dataset caches to live under a custom root.
+#
+# Example:
+# cache_root: /mnt/data/gdds-cache
+
+cache_root: ${oc.env:GDDS_DATA_DIR,${oc.env:HOME,/tmp}/.cache/gdds}

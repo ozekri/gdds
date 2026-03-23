@@ -1,0 +1,33 @@
+defaults:
+  - /model: campbell
+  - /forward_process: absorbing
+
+_target_: discrete_diffusion.algorithms.campbell.CampbellTrainer
+
+name: campbell
+backbone: campbell
+parameterization: subs
+time_conditioning: False
+T: 0
+causal_attention: False
+ignore_bos: False
+loss_type: elbo
+
+forward_process_type: absorbing
+
+forward_process:
+  _target_: discrete_diffusion.forward_process.AbsorbingForwardProcess
+  name: absorbing
+
+K_trunc: 1
+K_max: 10
+objective: campbell_event_ce
+
+horizon_T: 1.0
+
+block_size: 1024
+
+time_grid_size: 4096
+time_eps: 1e-5
+
+debug_masks: false

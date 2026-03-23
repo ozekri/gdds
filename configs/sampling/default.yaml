@@ -1,0 +1,17 @@
+predictor: ddpm_cache
+steps: 1024
+use_float64: true
+p_nucleus: 1.0
+num_sample_batches: 1
+num_sample_log: 2
+semi_ar: False
+stride_length: 1
+num_strides: 1
+inject_bos: True
+first_hitting: True
+kv_cache: False
+var_length: False
+save_samples: false
+samples_path: null
+sampler:
+  _target_: discrete_diffusion.sampling.absorbing.AbsorbingSampler

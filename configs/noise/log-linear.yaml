@@ -1,0 +1,3 @@
+# Hydra instantiation config for LogLinear noise schedule
+_target_: discrete_diffusion.noise_schedules.LogLinear
+eps: 1e-3

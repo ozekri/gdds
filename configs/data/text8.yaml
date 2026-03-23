@@ -1,0 +1,9 @@
+# Recommended: set model.length = 256 when matching the standard Text8 setup.
+train: text8
+valid: text8
+tokenizer_name_or_path: text8
+cache_dir: ${paths.cache_root}/text8
+wrap: True
+streaming: False
+insert_train_eos: True
+insert_valid_eos: True

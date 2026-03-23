@@ -1,0 +1,31 @@
+# SIK (Semantic-Informed Kernel) forward process.
+# Single source of truth for the k-NN-backed SIK configuration.
+# Not Hydra-instantiated: kernel needs embeddings at runtime (model or gpt2).
+
+_target_: discrete_diffusion.forward_process.sik.SIKForwardProcess
+name: sik_knn
+
+# --- Kernel (SIKKernel): embedding source + kernel params ---
+# embedding_source: "model" (backbone) or "gpt2" (pretrained; set HF_HOME in job script or gpt2_path)
+embedding_source: gpt2
+gpt2_model_name_or_path: gpt2
+gpt2_path: null
+
+epsilon: 0.01
+gamma: 0.0
+metric: gaussian  # gaussian (ℓ = ||e_i-e_j||²) or cosine (ℓ = 1 - cos_sim)
+implementation: knn
+variable_bandwidth: True
+k_neighbors: 7
+degree_chunk_size: 1000
+use_knn_graph: True
+top_k: 64
+
+# --- Forward process (SIKForwardProcess) ---
+time_grid_size: 4096
+time_eps: 1e-5
+temperature_beta: 0.0
+verbose: False
+lambda_min: 0.01
+lambda_sigmoid_s: 10.0
+lambda_t0: 0.6
