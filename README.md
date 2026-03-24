@@ -1,6 +1,6 @@
 # Generalized Discrete Diffusion from Snapshots (GDDS)
 
-[![Paper](https://img.shields.io/badge/Paper-arXiv-B31B1B?logo=arxiv&logoColor=white)](https://arxiv.org/)
+[![Paper](https://img.shields.io/badge/Paper-arXiv-B31B1B?logo=arxiv&logoColor=white)](https://arxiv.org/abs/2603.21342)
 [![Code](https://img.shields.io/badge/Code-GitHub-181717?logo=github&logoColor=white)](https://github.com/ozekri/gdds)
 [![Project Page](https://img.shields.io/badge/Project%20Page-Website-0F766E?logo=googlechrome&logoColor=white)](https://oussamazekri.fr/gdds)
 [![Hugging Face](https://img.shields.io/badge/Hugging%20Face-Demo-F59E0B?logo=huggingface&logoColor=white)](https://huggingface.co/)
@@ -12,6 +12,17 @@ Official implementation of the paper **"Generalized Discrete Diffusion from Snap
 [![GDDS forward noising teaser](assets/videos/gdds_forward_noising_teaser.gif)](assets/videos/gdds_forward_noising_teaser.gif)
 
 GDDS is a modular codebase for discrete diffusion modeling over large discrete state spaces. This release includes the GDDS training and sampling pipeline, baseline discrete diffusion algorithms, and Semantic-Informed Kernel (SIK) forward processes with both KNN and KeOps backends.
+
+<table>
+  <tr>
+    <td width="50%">
+      <img src="assets/images/gen-ppl.png" alt="GDDS generative perplexity results" width="100%">
+    </td>
+    <td width="50%">
+      <img src="assets/images/zero-shot-readme.png" alt="GDDS zero-shot results" width="100%">
+    </td>
+  </tr>
+</table>
 
 ## Why GDDS?
 
@@ -208,10 +219,14 @@ within the active Hydra run directory.
 If you find this work useful, please cite:
 
 ```bibtex
-@misc{zekri2026generalized,
+@misc{zekri2026generalizeddiscretediffusionsnapshots,
   title={Generalized Discrete Diffusion from Snapshots},
-  author={Zekri, Oussama and Uscidda, Th{\'e}o and Boull{\'e}, Nicolas and Korba, Anna},
-  year={2026}
+  author={Oussama Zekri and Théo Uscidda and Nicolas Boullé and Anna Korba},
+  year={2026},
+  eprint={2603.21342},
+  archivePrefix={arXiv},
+  primaryClass={stat.ML},
+  url={https://arxiv.org/abs/2603.21342},
 }
 ```
 
