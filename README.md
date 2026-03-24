@@ -3,7 +3,7 @@
 [![Paper](https://img.shields.io/badge/Paper-arXiv-B31B1B?logo=arxiv&logoColor=white)](https://arxiv.org/abs/2603.21342)
 [![Code](https://img.shields.io/badge/Code-GitHub-181717?logo=github&logoColor=white)](https://github.com/ozekri/gdds)
 [![Project Page](https://img.shields.io/badge/Project%20Page-Website-0F766E?logo=googlechrome&logoColor=white)](https://oussamazekri.fr/gdds)
-[![Hugging Face](https://img.shields.io/badge/Hugging%20Face-Demo-F59E0B?logo=huggingface&logoColor=white)](https://huggingface.co/)
+[![Hugging Face](https://img.shields.io/badge/Hugging%20Face-Demo-F59E0B?logo=huggingface&logoColor=white)](https://huggingface.co/papers/2603.21342)
 
 Official implementation of the paper **"Generalized Discrete Diffusion from Snapshots"**.
 
