@@ -219,14 +219,11 @@ within the active Hydra run directory.
 If you find this work useful, please cite:
 
 ```bibtex
-@misc{zekri2026generalizeddiscretediffusionsnapshots,
+@article{zekri2026generalized,
   title={Generalized Discrete Diffusion from Snapshots},
-  author={Oussama Zekri and Théo Uscidda and Nicolas Boullé and Anna Korba},
-  year={2026},
-  eprint={2603.21342},
-  archivePrefix={arXiv},
-  primaryClass={stat.ML},
-  url={https://arxiv.org/abs/2603.21342},
+  author={Zekri, Oussama and Uscidda, Th{\'e}o and Boull{\'e}, Nicolas and Korba, Anna},
+  journal={arXiv preprint arXiv:2603.21342},
+  year={2026}
 }
 ```
 
